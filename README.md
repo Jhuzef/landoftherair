@@ -212,3 +212,29 @@ Internally, there are a large handful of game settings that control how players 
 * `numberOfRandomStatsForItems` - the number of random stats an item can generate with, default 0
 * `randomStatMaxValue` - the max value a random stat can be on an item, default 0
 * `randomStatChance` - the chance of an item generating with a random stat (1-1000000), default 0
+
+## Creating a Local Development Environment with Docker
+
+Note: This environment has only been tested with Docker on Windows
+
+### Requirements
+
+* Docker (Version: 2.1.0.4+)
+
+### Environmental Variables
+
+Create a .env file in the root directory and define the keys and values listed below:
+
+* `MONGODB_URI` - `mongodb://database:27017/rair`
+* `REDIS_URL` - `redis://server:6379`
+* `AUTH0_SECRET` - get an Auth0 secret key from https://auth0.com/
+
+### Launching the Development Environment
+
+From the root directory type: `docker-compose up`
+
+The containers will be built based off the current source code and launched.
+
+Access the the running game by visiting `http://localhost:4567/?username=$STRING`
+
+If you make changes to the source code, you will need to destroy the cached image by running: `docker-compose down --rmi 'all'` and then relaunching the containers with `docker-compose up` from the root directory
