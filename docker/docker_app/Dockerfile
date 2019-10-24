@@ -6,9 +6,8 @@ COPY . /landoftherair
 
 WORKDIR /landoftherair
 
-RUN npm install
+RUN npm install --loglevel=error
 
 EXPOSE 4567
-
 
 ENTRYPOINT npm run setup && npm start
