@@ -1,0 +1,5 @@
+.gitignore
+Docker_App
+Docker_Database
+Docker_Server
+docker-compose.yml

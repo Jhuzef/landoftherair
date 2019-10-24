@@ -1,0 +1,39 @@
+version: '3.2'
+
+services:
+        database:
+                build:
+                        context: .
+                        dockerfile: Docker_Database/Dockerfile
+        
+                logging:
+                        driver: none
+
+                ports:
+                        - "27017:27017"
+
+                command: mongod --bind_ip 0.0.0.0 --noauth
+
+        server:
+                build:
+                        context: .
+                        dockerfile: Docker_Server/Dockerfile
+                
+                logging:
+                        driver: none
+
+                ports:
+                        - "6379:6379"
+
+        application:
+                build:
+                        context: .
+                        dockerfile: Docker_App/Dockerfile
+
+                ports:
+                        - "4567:4567"
+                        - "3303:3303"
+
+                depends_on:
+                        - database
+                        - server
