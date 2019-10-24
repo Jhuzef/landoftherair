@@ -227,7 +227,7 @@ Create a .env file in the root directory and define the keys and values listed b
 
 * `MONGODB_URI` - `mongodb://database:27017/rair`
 * `REDIS_URL` - `redis://server:6379`
-* `AUTH0_SECRET` - get an Auth0 secret key from https://auth0.com/
+* `AUTH0_SECRET` - `0`
 
 ### Launching the Development Environment
 
