@@ -4,7 +4,7 @@ services:
         database:
                 build:
                         context: .
-                        dockerfile: Docker_Database/Dockerfile
+                        dockerfile: docker_database/Dockerfile
         
                 logging:
                         driver: none
@@ -17,7 +17,7 @@ services:
         server:
                 build:
                         context: .
-                        dockerfile: Docker_Server/Dockerfile
+                        dockerfile: docker_server/Dockerfile
                 
                 logging:
                         driver: none
@@ -28,7 +28,7 @@ services:
         application:
                 build:
                         context: .
-                        dockerfile: Docker_App/Dockerfile
+                        dockerfile: docker_app/Dockerfile
 
                 ports:
                         - "4567:4567"
