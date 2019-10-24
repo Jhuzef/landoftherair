@@ -237,4 +237,8 @@ The containers will be built based off the current source code and launched.
 
 Access the the running game by visiting `http://localhost:4567/?username=$STRING`
 
-If you make changes to the source code, you will need to destroy the cached image by running: `docker-compose down --rmi 'all'` and then relaunching the containers with `docker-compose up` from the root directory
+If you make changes to the source code, you will need to destroy the cached image by running:
+
+`docker-compose down --rmi 'all'`
+
+and then relaunching the containers with `docker-compose up` from the root directory
