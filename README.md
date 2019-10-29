@@ -220,6 +220,7 @@ Note: This environment has only been tested with Docker on Windows
 ### Requirements
 
 * Docker (Version: 2.1.0.4+)
+* Git
 
 ### Environmental Variables
 
@@ -228,6 +229,10 @@ Create a .env file in the root directory and define the keys and values listed b
 * `MONGODB_URI` - `mongodb://database:27017/rair`
 * `REDIS_URL` - `redis://server:6379`
 * `AUTH0_SECRET` - `0`
+
+### Cloning the repository
+
+`git clone https://github.com/Jhuzef/landoftherair.git`
 
 ### Launching the Development Environment
 
