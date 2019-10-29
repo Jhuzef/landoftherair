@@ -241,4 +241,10 @@ If you make changes to the source code, you will need to destroy the cached imag
 
 `docker-compose down --rmi 'all'`
 
-and then relaunching the containers with `docker-compose up` from the root directory
+and then relaunching the containers with `docker-compose up` from the root directory.
+
+### Making changes to the Docker file
+
+In the event that there are changes to the dependencies, each Dockerfile is under the docker directory. Cross-reference the docker images used in each docker file and reference the docker documentation to find the appropriate commands to install additional dependecies. For example, the application container uses a node image that is based off of Ubuntu. Therefore, `apt-get install` would be the appropriate command to install additional dependencies.
+
+For every additional service, please create a separate docker file to build the image for this new service and append it to the docker-compose file. The docker-compose.yml file is used to build + run the docker containers, therefore this new service needs to have its relationship defined in the docker-compose file.
