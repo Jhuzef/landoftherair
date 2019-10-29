@@ -8,6 +8,6 @@ WORKDIR /landoftherair
 
 RUN npm install --loglevel=error
 
-EXPOSE 4567
+EXPOSE 4567 3303
 
 ENTRYPOINT npm run setup && npm start
