@@ -213,14 +213,17 @@ Internally, there are a large handful of game settings that control how players 
 * `randomStatMaxValue` - the max value a random stat can be on an item, default 0
 * `randomStatChance` - the chance of an item generating with a random stat (1-1000000), default 0
 
-## Creating a Local Development Environment with Docker
-
-Note: This environment has only been tested with Docker on Windows
+## Creating a Local Development Environment with Minikube
 
 ### Requirements
 
-* Docker (Version: 2.1.0.4+)
-* Git
+* Docker for Windows (Version: 2.1.0.4+)
+* Git Bash
+* Minikube
+
+### Cloning the repository
+
+`git clone https://github.com/Jhuzef/landoftherair.git`
 
 ### Environmental Variables
 
@@ -230,15 +233,28 @@ Create a .env file in the root directory and define the keys and values listed b
 * `REDIS_URL` - `redis://server:6379`
 * `AUTH0_SECRET` - `0`
 
-### Cloning the repository
-
-`git clone https://github.com/Jhuzef/landoftherair.git`
 
 ### Launching the Development Environment
 
-From the root directory type: `docker-compose up`
+Within the Git Bash shell, from the root directory, run:
 
-The containers will be built based off the current source code and launched.
+`minikube start --vm-driver hyperv --kubernetes-version v1.14.9 --memory=8192`
+
+Bridge the local docker images with Minikube using this command:
+
+`eval $(minikube docker-env)`
+
+Build the docker images for the Kubernetes deployment:
+
+`docker build -f docker/docker_app/Dockerfile -t application . & docker build -f docker/docker_server/Dockerfile -t server . & docker build -f docker/docker_database/Dockerfile -t database .`
+
+Launch the Kubernetes services & deployments:
+
+`kubectl apply -f kubernetes/database-service.yaml,kubernetes/server-service.yaml,kubernetes/application-service.yaml,kubernetes/database-deployment.yaml,kubernetes/server-deployment.yaml,kubernetes/application-deployment.yaml`
+
+Portforward the deployment to localhost:
+
+`kubectl port-forward service/application 3303:3303 && kubectl port-forward service/application 4567:4567 &`
 
 Access the the running game by visiting `http://localhost:4567/?username=$STRING`
 
@@ -246,7 +262,7 @@ If you make changes to the source code, you will need to destroy the cached imag
 
 `docker-compose down --rmi 'all'`
 
-and then relaunching the containers with `docker-compose up` from the root directory.
+and then build the containers again with the same docker build command from the root directory.
 
 ### Making changes to the Docker file
 
