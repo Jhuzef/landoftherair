@@ -2,7 +2,7 @@ FROM node:8.9
 
 RUN mkdir /landoftherair
 
-COPY . /landoftherair
+COPY ./ /landoftherair
 
 WORKDIR /landoftherair
 

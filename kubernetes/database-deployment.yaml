@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    kube.service: database
+  name: database
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        kube.service: database
+    spec:
+      containers:
+      - args:
+        - mongod
+        - --bind_ip
+        - 0.0.0.0
+        - --noauth
+        image: database
+        imagePullPolicy: Never
+        name: database
+        ports:
+        - containerPort: 27017
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    kube.service: application
+  name: application
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        kube.service: application
+    spec:
+      containers:
+      - image: application
+        imagePullPolicy: Never
+        name: application
+        ports:
+        - containerPort: 4567
+        - containerPort: 3303
+        resources: {}
+      restartPolicy: Always
+status: {}

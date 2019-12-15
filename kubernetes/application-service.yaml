@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    kube.service: application
+  name: application
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "4567"
+    port: 4567
+    targetPort: 4567
+  - name: "3303"
+    port: 3303
+    targetPort: 3303
+  selector:
+    kube.service: application
+status:
+  loadBalancer: {}
