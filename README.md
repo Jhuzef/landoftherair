@@ -254,7 +254,8 @@ Launch the Kubernetes services & deployments:
 
 Portforward the deployment to localhost:
 
-`kubectl port-forward service/application 3303:3303 && kubectl port-forward service/application 4567:4567 &`
+`kubectl port-forward service/application 3303:3303 &`
+`kubectl port-forward service/application 4567:4567 &`
 
 Access the the running game by visiting `http://localhost:4567/?username=$STRING`
 
