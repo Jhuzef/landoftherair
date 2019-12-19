@@ -236,7 +236,7 @@ Create a .env file in the root directory and define the keys and values listed b
 
 ### Launching the Development Environment
 
-Within the Git Bash shell, from the root directory, run:
+Within the Git Bash shell as administrator, from the root directory, run:
 
 `minikube start --vm-driver hyperv --kubernetes-version v1.14.9 --memory=8192`
 
